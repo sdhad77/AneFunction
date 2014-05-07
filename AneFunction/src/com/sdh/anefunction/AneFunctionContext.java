@@ -30,6 +30,7 @@ public class AneFunctionContext extends FREContext {
         map.put("toast", new ToastFunction());
         map.put("vibration", new VibrationFunction());
         map.put("deviceinfo", new DeviceInfoFunction());
+        map.put("backpress", new BackPressCloseFunction());
         return map;
     }
  
