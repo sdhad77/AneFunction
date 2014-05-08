@@ -31,6 +31,7 @@ public class AneFunctionContext extends FREContext {
         map.put("vibration", new VibrationFunction());
         map.put("deviceinfo", new DeviceInfoFunction());
         map.put("backpress", new BackPressCloseFunction());
+        map.put("mediastoreimageload", new MediaStoreImageLoadFunction());
         return map;
     }
  
