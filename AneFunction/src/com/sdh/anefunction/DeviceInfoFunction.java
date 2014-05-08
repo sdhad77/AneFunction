@@ -21,7 +21,7 @@ public class DeviceInfoFunction extends Activity implements FREFunction
 			
 			FREObject obj = FREObject.newObject("Object", null);
 			
-			if     (message.equals("BOARD"))          obj.setProperty("BOARD",           FREObject.newObject(Build.BOARD));
+			if     (message.equals("BOARD"))           obj.setProperty("BOARD",           FREObject.newObject(Build.BOARD));
 			else if(message.equals("BRAND"))           obj.setProperty("BRAND",           FREObject.newObject(Build.BRAND));
 			else if(message.equals("CPU_ABI"))         obj.setProperty("CPU_ABI",         FREObject.newObject(Build.CPU_ABI));
 			else if(message.equals("DEVICE"))          obj.setProperty("DEVICE",          FREObject.newObject(Build.DEVICE));
