@@ -11,26 +11,30 @@ public class DeviceInfoFunction extends Activity implements FREFunction{
 	
 	@Override
 	public FREObject call(FREContext arg0, FREObject[] arg1) {
-		
+		CharSequence message = "";
+            
 		try
 		{
-			FREObject obj = FREObject.newObject("Object", null);
-			obj.setProperty("BOARD",           FREObject.newObject(Build.BOARD));
-			obj.setProperty("BRAND",           FREObject.newObject(Build.BRAND));
-			obj.setProperty("CPU_ABI",         FREObject.newObject(Build.CPU_ABI));
-			obj.setProperty("DEVICE",          FREObject.newObject(Build.DEVICE));
-			obj.setProperty("DISPLAY",         FREObject.newObject(Build.DISPLAY));
-			obj.setProperty("FINGERPRINT",     FREObject.newObject(Build.FINGERPRINT));
-			obj.setProperty("HOST",            FREObject.newObject(Build.HOST));
-			obj.setProperty("ID",              FREObject.newObject(Build.ID));
-			obj.setProperty("MANUFACTURER",    FREObject.newObject(Build.MANUFACTURER));
-			obj.setProperty("MODEL",           FREObject.newObject(Build.MODEL));
-			obj.setProperty("PRODUCT",         FREObject.newObject(Build.PRODUCT));
-			obj.setProperty("TAGS",            FREObject.newObject(Build.TAGS));
-			obj.setProperty("TYPE",            FREObject.newObject(Build.TYPE));
-			obj.setProperty("USER",            FREObject.newObject(Build.USER));
-			obj.setProperty("VERSION.RELEASE", FREObject.newObject(Build.VERSION.RELEASE));
+			message = arg1[0].getAsString();
 			
+			FREObject obj = FREObject.newObject("Object", null);
+			
+			if     (message == "BOARD")           obj.setProperty("BOARD",           FREObject.newObject(Build.BOARD));
+			else if(message == "BRAND")           obj.setProperty("BRAND",           FREObject.newObject(Build.BRAND));
+			else if(message == "CPU_ABI")         obj.setProperty("CPU_ABI",         FREObject.newObject(Build.CPU_ABI));
+			else if(message == "DEVICE")          obj.setProperty("DEVICE",          FREObject.newObject(Build.DEVICE));
+			else if(message == "DISPLAY")         obj.setProperty("DISPLAY",         FREObject.newObject(Build.DISPLAY));
+			else if(message == "FINGERPRINT")     obj.setProperty("FINGERPRINT",     FREObject.newObject(Build.FINGERPRINT));
+			else if(message == "HOST")            obj.setProperty("HOST",            FREObject.newObject(Build.HOST));
+			else if(message == "ID")              obj.setProperty("ID",              FREObject.newObject(Build.ID));
+			else if(message == "MANUFACTURER")    obj.setProperty("MANUFACTURER",    FREObject.newObject(Build.MANUFACTURER));
+			else if(message == "MODEL")           obj.setProperty("MODEL",           FREObject.newObject(Build.MODEL));
+			else if(message == "PRODUCT")         obj.setProperty("PRODUCT",         FREObject.newObject(Build.PRODUCT));
+			else if(message == "TAGS")            obj.setProperty("TAGS",            FREObject.newObject(Build.TAGS));
+			else if(message == "TYPE")            obj.setProperty("TYPE",            FREObject.newObject(Build.TYPE));
+			else if(message == "USER")            obj.setProperty("USER",            FREObject.newObject(Build.USER));
+			else if(message == "VERSION.RELEASE") obj.setProperty("VERSION.RELEASE", FREObject.newObject(Build.VERSION.RELEASE));
+
 			return obj;
 		} 
 		catch (Exception e)
