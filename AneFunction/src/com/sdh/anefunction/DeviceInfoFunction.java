@@ -2,7 +2,6 @@ package com.sdh.anefunction;
 
 import android.app.Activity;
 import android.os.Build;
-import android.widget.Toast;
 
 import com.adobe.fre.FREContext;
 import com.adobe.fre.FREFunction;
