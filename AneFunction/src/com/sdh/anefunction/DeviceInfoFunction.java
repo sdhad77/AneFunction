@@ -1,7 +1,6 @@
 package com.sdh.anefunction;
 
 import android.app.Activity;
-import android.widget.Toast;
 import android.os.Build;
 
 import com.adobe.fre.FREContext;
@@ -13,23 +12,31 @@ public class DeviceInfoFunction extends Activity implements FREFunction{
 	@Override
 	public FREObject call(FREContext arg0, FREObject[] arg1) {
 		
-		String str =  "BOARD = " + Build.BOARD +
-					"\nBRAND = " + Build.BRAND +
-					"\nCPU_ABI = " + Build.CPU_ABI +
-					"\nDEVICE = " + Build.DEVICE +
-					"\nDISPLAY = " + Build.DISPLAY +
-					"\nFINGERPRINT = " + Build.FINGERPRINT +
-					"\nHOST = " + Build.HOST +
-					"\nID = " + Build.ID +
-					"\nMANUFACTURER = " + Build.MANUFACTURER +
-					"\nMODEL = " + Build.MODEL +
-					"\nPRODUCT = " + Build.PRODUCT +
-					"\nTAGS = " + Build.TAGS +
-					"\nTYPE = " + Build.TYPE +
-					"\nUSER = " + Build.USER +
-					"\nVERSION.RELEASE = " + Build.VERSION.RELEASE;
-
-		Toast.makeText(arg0.getActivity(), str, Toast.LENGTH_LONG).show();
+		try
+		{
+			FREObject obj = FREObject.newObject("Object", null);
+			obj.setProperty("BOARD",           FREObject.newObject(Build.BOARD));
+			obj.setProperty("BRAND",           FREObject.newObject(Build.BRAND));
+			obj.setProperty("CPU_ABI",         FREObject.newObject(Build.CPU_ABI));
+			obj.setProperty("DEVICE",          FREObject.newObject(Build.DEVICE));
+			obj.setProperty("DISPLAY",         FREObject.newObject(Build.DISPLAY));
+			obj.setProperty("FINGERPRINT",     FREObject.newObject(Build.FINGERPRINT));
+			obj.setProperty("HOST",            FREObject.newObject(Build.HOST));
+			obj.setProperty("ID",              FREObject.newObject(Build.ID));
+			obj.setProperty("MANUFACTURER",    FREObject.newObject(Build.MANUFACTURER));
+			obj.setProperty("MODEL",           FREObject.newObject(Build.MODEL));
+			obj.setProperty("PRODUCT",         FREObject.newObject(Build.PRODUCT));
+			obj.setProperty("TAGS",            FREObject.newObject(Build.TAGS));
+			obj.setProperty("TYPE",            FREObject.newObject(Build.TYPE));
+			obj.setProperty("USER",            FREObject.newObject(Build.USER));
+			obj.setProperty("VERSION.RELEASE", FREObject.newObject(Build.VERSION.RELEASE));
+			
+			return obj;
+		} 
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
 
 		return null;
 	}
