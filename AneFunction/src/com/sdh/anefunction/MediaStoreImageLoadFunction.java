@@ -10,9 +10,16 @@ import com.adobe.fre.FREContext;
 import com.adobe.fre.FREFunction;
 import com.adobe.fre.FREObject;
 
+/**
+ * 갤러리 기능을 위해 저장소에서 이미지들의 경로를 찾아 저장,반환하는 클래스입니다.</br>
+ * http://mainia.tistory.com/497
+ * @author 신동환
+ */
 public class MediaStoreImageLoadFunction implements FREFunction
 {
 	private Context _mContext;
+	
+	//받아온 이미지 경로 앞에 붙여줄 문자열입니다.
 	final private String FILE_PATH = "file://";
 	
 	@Override
@@ -20,15 +27,22 @@ public class MediaStoreImageLoadFunction implements FREFunction
 	{
 		_mContext = arg0.getActivity();
 
+		//이미지 경로가 저장될 ArrayList입니다.
 		ArrayList<String> thumbsDataList = new ArrayList<String>();
 		
+		//이미지 경로를 받아오고(thumbsDataList), 받아온 이미지 갯수를 dataCnt에 저장합니다.
 		int dataCnt = getThumbInfo(thumbsDataList);
 
 		try
 		{
 			FREObject obj = FREObject.newObject("Object", null);
 			
+			//다음의 형태로 이미지 경로들을 Object에 저장합니다.
+			//key : "img + 숫자", value : 경로
 			for(int i = 0; i < dataCnt; i++) obj.setProperty("img" + i, FREObject.newObject(thumbsDataList.get(i).toString()));
+			
+			//이미지 경로 갯수를 저장합니다.
+			obj.setProperty("imgcnt", FREObject.newObject(dataCnt));
 			
 			return obj;
 		}
@@ -47,8 +61,13 @@ public class MediaStoreImageLoadFunction implements FREFunction
 	 */
 	private int getThumbInfo(ArrayList<String> thumbsDatas)
 	{
+		//이미지 갯수입니다.
 		int dataCnt = 0;
+		
+		//이미지 경로만 받아옵니다.
 		String[] proj = {MediaStore.Images.Media.DATA};
+		
+		//이미지 커서입니다.
 		Cursor imageCursor = _mContext.getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, proj, null, null, null);
 
 		if (imageCursor != null && imageCursor.moveToFirst())
@@ -61,14 +80,16 @@ public class MediaStoreImageLoadFunction implements FREFunction
 				thumbsData = imageCursor.getString(thumbsDataCol);
 				if (thumbsData != null)
 				{
+					//읽어온 이미지 경로에 파일경로를 붙여서 저장합니다.
 					thumbsDatas.add(FILE_PATH + thumbsData);
 					dataCnt++;
 				}
-			}
+			}//아직 읽을 이미지가 남아있으면 계속 읽어옵니다.
 			while (imageCursor.moveToNext());
 		}
 		imageCursor.close();
 		
+		//이미지 갯수를 반환합니다.
 		return dataCnt;
 	}
 }
