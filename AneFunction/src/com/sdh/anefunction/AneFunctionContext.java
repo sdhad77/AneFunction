@@ -2,8 +2,6 @@ package com.sdh.anefunction;
  
 import java.util.HashMap;
 import java.util.Map;
- 
-import android.os.Vibrator;
 
 import com.adobe.fre.FREContext;
 import com.adobe.fre.FREFunction;
@@ -15,8 +13,6 @@ import com.sdh.anefunction.function.VibrationFunction;
  
 public class AneFunctionContext extends FREContext
 {
-	public Vibrator androidVibrator = null;
-
 	public AneFunctionContext()
 	{
 	}
@@ -24,7 +20,6 @@ public class AneFunctionContext extends FREContext
     @Override
     public void dispose()
     {
-    	androidVibrator = null;
     }
  
     @Override
