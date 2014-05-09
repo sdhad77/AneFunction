@@ -3,12 +3,6 @@ package com.sdh.anefunction;
 import java.util.HashMap;
 import java.util.Map;
  
-
-
-
-
-
-
 import android.os.Vibrator;
 
 import com.adobe.fre.FREContext;
@@ -19,8 +13,8 @@ import com.sdh.anefunction.function.MediaStoreImageLoadFunction;
 import com.sdh.anefunction.function.ToastFunction;
 import com.sdh.anefunction.function.VibrationFunction;
  
-public class AneFunctionContext extends FREContext {
- 
+public class AneFunctionContext extends FREContext
+{
 	public Vibrator androidVibrator = null;
 
 	public AneFunctionContext()
@@ -28,14 +22,14 @@ public class AneFunctionContext extends FREContext {
 	}
 	
     @Override
-    public void dispose() {
-        // TODO Auto-generated method stub
+    public void dispose()
+    {
     	androidVibrator = null;
     }
  
     @Override
-    public Map<String, FREFunction> getFunctions() {
-        // TODO Auto-generated method stub
+    public Map<String, FREFunction> getFunctions()
+    {
         Map<String, FREFunction> map = new HashMap<String, FREFunction>();
         map.put("toast", new ToastFunction());
         map.put("vibration", new VibrationFunction());
@@ -44,5 +38,4 @@ public class AneFunctionContext extends FREContext {
         map.put("mediastoreimageload", new MediaStoreImageLoadFunction());
         return map;
     }
- 
 }
