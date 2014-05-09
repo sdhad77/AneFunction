@@ -7,6 +7,10 @@ import com.adobe.fre.FREContext;
 import com.adobe.fre.FREFunction;
 import com.adobe.fre.FREObject;
 
+/**
+ * device 정보들을 문자열 하나로 만들어서 반환하는 클래스입니다
+ * @author 신동환
+ */
 public class DeviceInfoFunction extends Activity implements FREFunction
 {
 	@Override
