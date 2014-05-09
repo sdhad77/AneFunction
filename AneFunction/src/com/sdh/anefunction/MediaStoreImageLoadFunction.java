@@ -13,6 +13,7 @@ import com.adobe.fre.FREObject;
 public class MediaStoreImageLoadFunction implements FREFunction
 {
 	private Context _mContext;
+	final private String FILE_PATH = "file://";
 	
 	@Override
 	public FREObject call(FREContext arg0, FREObject[] arg1)
@@ -60,7 +61,7 @@ public class MediaStoreImageLoadFunction implements FREFunction
 				thumbsData = imageCursor.getString(thumbsDataCol);
 				if (thumbsData != null)
 				{
-					thumbsDatas.add(thumbsData);
+					thumbsDatas.add(FILE_PATH + thumbsData);
 					dataCnt++;
 				}
 			}
