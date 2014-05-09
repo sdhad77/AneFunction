@@ -1,4 +1,4 @@
-package com.sdh.anefunction;
+package com.sdh.anefunction.function;
 
 import android.app.Activity;
 import android.content.Context;
@@ -11,6 +11,7 @@ import com.adobe.fre.FREInvalidObjectException;
 import com.adobe.fre.FREObject;
 import com.adobe.fre.FRETypeMismatchException;
 import com.adobe.fre.FREWrongThreadException;
+import com.sdh.anefunction.AneFunctionContext;
 
 public class VibrationFunction extends Activity implements FREFunction{
 	
